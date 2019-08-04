@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Style Testing</title>
+    </head>
+
+    <style>
+        body{
+            color: #fff;
+            background-color: #2f2f2f;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .MainContainer{
+            display: grid;
+            grid-auto-flow: row;
+            grid-auto-rows: 7em;
+        }
+
+        .Tile{
+            display: flex;
+            justify-content: space-evenly;
+            border-radius: 2.2em;
+            border: 2px solid #fff;
+            align-content: space-between;
+            margin: 0.5em;
+        }
+
+            .Tile div{
+                display: inline-block;
+                margin: auto;
+            }
+
+                .Tile div img{
+                    height: 2.5em;
+                    width: 2.5em;
+                }
+
+                    .Tile div img:active, 
+                    .Tile div img:hover{
+                        transform: scale(1.17);
+                    }
+         
+        .Tile:hover{
+            transform: scale(1.06);
+            transition: all 0.25s linear;
+            background-color: #4f4f4f;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        function doStuff() {
+            alert('Delete Row!');
+            if(tile){
+                tile.style.backgroundColor = backgroundColor;
+                tile.style.borderColor = borderColor;
+                tile.style.transition = transition;
+            }
+        }
+
+        var mousedownTimeout;
+        var tile;
+        var backgroundColor, borderColor, transition;
+
+        function imgMouseDownHandler(sender){
+            tile = sender.parentElement.parentElement;
+            if(tile){
+                transition = tile.style.transition;
+                backgroundColor = tile.style.backgroundColor;
+                borderColor = tile.style.borderColor;
+
+                tile.style.transition = 'all 2.0s linear';
+                tile.style.backgroundColor = '#ff0b0b';
+                tile.style.borderColor = '#ff0b0b';
+
+                mousedownTimeout = window.setTimeout(doStuff, 2000);
+            }
+        }
+
+        function imgMouseUpHandler(){
+            if(tile){
+                tile.style.backgroundColor = backgroundColor;
+                tile.style.borderColor = borderColor;
+                tile.style.transition = transition;
+
+                window.clearTimeout(mousedownTimeout);
+            }
+        }
+    </script>
+
+    <body>
+        <div class="MainContainer">
+            <div class="Tile">
+                <div>
+                    <strong>Test Field 1</strong><br />
+                    <strong>Test Field 2</strong>
+                </div>
+                <div style="flex-basis: 42%"></div>
+                <div>
+                    <img src="delete-icon.png" onmousedown="imgMouseDownHandler(this);" onmouseup="imgMouseUpHandler();">
+                </div>
+            </div>
+
+            <div class="Tile">
+                <div>
+                    <strong>Test Field 1</strong><br />
+                    <strong>Test Field 2</strong>
+                </div>
+                <div style="flex-basis: 42%"></div>
+                <div>
+                    <img src="delete-icon.png" onmousedown="imgMouseDownHandler(this);" onmouseup="imgMouseUpHandler();">
+                </div>
+            </div>
+
+            <div class="Tile">
+                <div>
+                    <strong>Test Field 1</strong><br />
+                    <strong>Test Field 2</strong>
+                </div>
+                <div style="flex-basis: 42%"></div>
+                <div>
+                    <img src="delete-icon.png" onmousedown="imgMouseDownHandler(this);" onmouseup="imgMouseUpHandler();">
+                </div>
+            </div>
+
+            <div class="Tile">
+                <div>
+                    <strong>Test Field 1</strong><br />
+                    <strong>Test Field 2</strong>
+                </div>
+                <div style="flex-basis: 42%"></div>
+                <div>
+                    <img src="delete-icon.png" onmousedown="imgMouseDownHandler(this);" onmouseup="imgMouseUpHandler();">
+                </div>
+            </div>
+
+            <div class="Tile">
+                <div>
+                    <strong>Test Field 1</strong><br />
+                    <strong>Test Field 2</strong>
+                </div>
+                <div style="flex-basis: 42%"></div>
+                <div>
+                    <img src="delete-icon.png" onmousedown="imgMouseDownHandler(this);" onmouseup="imgMouseUpHandler();">
+                </div>
+            </div>
+
+            <div class="Tile">
+                <div>
+                    <strong>Test Field 1</strong><br />
+                    <strong>Test Field 2</strong>
+                </div>
+                <div style="flex-basis: 42%"></div>
+                <div>
+                    <img src="delete-icon.png" onmousedown="imgMouseDownHandler(this);" onmouseup="imgMouseUpHandler();">
+                </div>
+            </div>
+        </div>  
+    </body>
+</html>
