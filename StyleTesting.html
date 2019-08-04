@@ -52,11 +52,7 @@
     <script>
         function doStuff() {
             alert('Delete Row!');
-            if(tile){
-                tile.style.backgroundColor = backgroundColor;
-                tile.style.borderColor = borderColor;
-                tile.style.transition = transition;
-            }
+            resetCssProperties();
         }
 
         var mousedownTimeout;
@@ -79,12 +75,15 @@
         }
 
         function imgMouseUpHandler(){
+            resetCssProperties();
+            window.clearTimeout(mousedownTimeout);
+        }
+
+        function resetCssProperties(){
             if(tile){
                 tile.style.backgroundColor = backgroundColor;
                 tile.style.borderColor = borderColor;
                 tile.style.transition = transition;
-
-                window.clearTimeout(mousedownTimeout);
             }
         }
     </script>
