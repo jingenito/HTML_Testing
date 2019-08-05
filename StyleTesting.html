@@ -3,95 +3,169 @@
     <head>
         <meta charset="utf-8">
         <title>Style Testing</title>
-    </head>
-
-    <style>
-        body{
-            color: #fff;
-            background-color: #2f2f2f;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .MainContainer{
-            display: grid;
-            grid-auto-flow: row;
-            grid-auto-rows: 7em;
-            height: 40em;
-        }
-
-        .Tile{
-            display: flex;
-            justify-content: space-evenly;
-            border-radius: 2.2em;
-            border: 2px solid #fff;
-            align-content: space-between;
-            margin: 0.5em;
-        }
-
-            .Tile div{
+    
+        <style>
+            body {
+                color: #fff;
+                background-color: #2f2f2f;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        
+            .MainContainer {
+                display: grid;
+                grid-auto-flow: row;
+                grid-auto-rows: 7em;
+                height: 40em;
+            }
+        
+            .Tile {
+                display: flex;
+                justify-content: space-evenly;
+                border-radius: 2.2em;
+                border: 2px solid #fff;
+                align-content: space-between;
+                margin: 0.5em;
+            }
+        
+            .Tile div {
                 display: inline-block;
                 margin: auto;
             }
-
-                .Tile div img{
-                    height: 2.5em;
-                    width: 2.5em;
+        
+            .Tile div.loader,
+            .Tile div.loader:before,
+            .Tile div.loader:after {
+                background: #ffffff;
+                -webkit-animation: load1 1s infinite ease-in-out;
+                animation: load1 1s infinite ease-in-out;
+                width: 1em;
+                height: 4em;
+            }
+        
+            .Tile div.loader {
+                color: #ffffff;
+                text-indent: -9999em;
+                margin: 88px auto;
+                position: relative;
+                font-size: 11px;
+                -webkit-transform: translateZ(0);
+                -ms-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s;
+            }
+        
+            .Tile div.loader:before,
+            .Tile div.loader:after {
+                position: absolute;
+                top: 0;
+                content: '';
+            }
+        
+            .Tile div.loader:before {
+                left: -1.5em;
+                -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s;
+            }
+        
+            .Tile div.loader:after {
+                left: 1.5em;
+            }
+        
+            @-webkit-keyframes load1 {
+        
+                0%,
+                80%,
+                100% {
+                    box-shadow: 0 0;
+                    height: 4em;
                 }
-
-                    .Tile div img:active, 
-                    .Tile div img:hover{
-                        transform: scale(1.17);
-                    }
-         
-        .Tile:hover{
-            transform: scale(1.06);
-            transition: all 0.25s linear;
-            background-color: #4f4f4f;
-            cursor: pointer;
-        }
-    </style>
-
-    <script>
-        function doStuff() {
-            alert('Delete Row!');
-            resetCssProperties();
-        }
-
-        var mousedownTimeout;
-        var tile;
-        var backgroundColor, borderColor, transition;
-
-        function imgMouseDownHandler(sender){
-            tile = sender.parentElement.parentElement;
-            if(tile){
-                transition = tile.style.transition;
-                backgroundColor = tile.style.backgroundColor;
-                borderColor = tile.style.borderColor;
-
-                tile.style.transition = 'all 2.0s linear';
-                tile.style.backgroundColor = '#ff0b0b';
-                tile.style.borderColor = '#ff0b0b';
-
-                mousedownTimeout = window.setTimeout(doStuff, 2000);
+        
+                40% {
+                    box-shadow: 0 -2em;
+                    height: 5em;
+                }
             }
-        }
-
-        function imgMouseUpHandler(){
-            resetCssProperties();
-            window.clearTimeout(mousedownTimeout);
-        }
-
-        function resetCssProperties(){
-            if(tile){
-                tile.style.backgroundColor = backgroundColor;
-                tile.style.borderColor = borderColor;
-                tile.style.transition = transition;
+        
+            @keyframes load1 {
+        
+                0%,
+                80%,
+                100% {
+                    box-shadow: 0 0;
+                    height: 4em;
+                }
+        
+                40% {
+                    box-shadow: 0 -2em;
+                    height: 5em;
+                }
             }
-        }
-    </script>
+        
+            .Tile div img {
+                height: 2.5em;
+                width: 2.5em;
+            }
+        
+            .Tile div img:active,
+            .Tile div img:hover {
+                transform: scale(1.17);
+            }
+        
+            .Tile:hover {
+                transform: scale(1.06);
+                transition: all 0.25s linear;
+                background-color: #4f4f4f;
+                cursor: pointer;
+            }
+        </style>
+    
+        <script>
+            function doStuff() {
+                alert('Delete Row!');
+                resetCssProperties();
+            }
+
+            var mousedownTimeout;
+            var tile;
+            var backgroundColor, borderColor, transition;
+
+            function imgMouseDownHandler(sender) {
+                tile = sender.parentElement.parentElement;
+                if (tile) {
+                    transition = tile.style.transition;
+                    backgroundColor = tile.style.backgroundColor;
+                    borderColor = tile.style.borderColor;
+
+                    tile.style.transition = 'all 2.0s linear';
+                    tile.style.backgroundColor = '#ff0b0b';
+                    tile.style.borderColor = '#ff0b0b';
+
+                    mousedownTimeout = window.setTimeout(doStuff, 2000);
+                }
+            }
+
+            function imgMouseUpHandler() {
+                resetCssProperties();
+                window.clearTimeout(mousedownTimeout);
+            }
+
+            function resetCssProperties() {
+                if (tile) {
+                    tile.style.backgroundColor = backgroundColor;
+                    tile.style.borderColor = borderColor;
+                    tile.style.transition = transition;
+                }
+            }
+        </script>
+    </head>
 
     <body>
         <div class="MainContainer">
+            <div class="Tile">
+                <div style="align-self: center" class="loader">Loading...</div>
+            </div>
+            
             <div class="Tile">
                 <div>
                     <strong>Test Field 1</strong><br />
