@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Style Testing</title>
-    
+        <link rel = "stylesheet" type = "text/css" href = "Loaders.css" />
+
         <style>
             body {
                 color: #fff;
@@ -30,76 +31,6 @@
             .Tile div {
                 display: inline-block;
                 margin: auto;
-            }
-        
-            .Tile div.loader,
-            .Tile div.loader:before,
-            .Tile div.loader:after {
-                background: #ffffff;
-                -webkit-animation: load1 1s infinite ease-in-out;
-                animation: load1 1s infinite ease-in-out;
-                width: 1em;
-                height: 4em;
-            }
-        
-            .Tile div.loader {
-                color: #ffffff;
-                text-indent: -9999em;
-                margin: 88px auto;
-                position: relative;
-                font-size: 11px;
-                -webkit-transform: translateZ(0);
-                -ms-transform: translateZ(0);
-                transform: translateZ(0);
-                -webkit-animation-delay: -0.16s;
-                animation-delay: -0.16s;
-            }
-        
-            .Tile div.loader:before,
-            .Tile div.loader:after {
-                position: absolute;
-                top: 0;
-                content: '';
-            }
-        
-            .Tile div.loader:before {
-                left: -1.5em;
-                -webkit-animation-delay: -0.32s;
-                animation-delay: -0.32s;
-            }
-        
-            .Tile div.loader:after {
-                left: 1.5em;
-            }
-        
-            @-webkit-keyframes load1 {
-        
-                0%,
-                80%,
-                100% {
-                    box-shadow: 0 0;
-                    height: 4em;
-                }
-        
-                40% {
-                    box-shadow: 0 -2em;
-                    height: 5em;
-                }
-            }
-        
-            @keyframes load1 {
-        
-                0%,
-                80%,
-                100% {
-                    box-shadow: 0 0;
-                    height: 4em;
-                }
-        
-                40% {
-                    box-shadow: 0 -2em;
-                    height: 5em;
-                }
             }
         
             .Tile div img {
@@ -163,7 +94,7 @@
     <body>
         <div class="MainContainer">
             <div class="Tile">
-                <div style="align-self: center" class="loader">Loading...</div>
+                <div style="align-self: center" class="BlockLoader">Loading...</div>
             </div>
             
             <div class="Tile">
